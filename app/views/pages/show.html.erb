@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="flex justify-between max-h-10">
+  <h1 class="text-2xl font-bold truncate">
+    <%= link_to "‹", root_path, class: "p-2 rounded hover:bg-gray-100" %>
+    <%= @page.name %>
+  </h1>
+    <div class="flex gap-3">
+      <%= button_to "Run", page_check_path(@page), method: :post, class: "border border-gray-200 rounded shadow px-2 py-1 hover:bg-gray-100"  %>
+      <%= link_to "Edit", edit_page_path(@page), class: "border border-gray-200 rounded shadow px-2 py-1 hover:bg-gray-100" %>
+    </div>
+</div>
+
+<%= link_to @page.url, @page.url, class: "text-gray-500", target: :_blank %>
+
+<div class="mt-4">
+  <h4 class="font-medium text-gray-700 font-bold">Recent results</h4>
+  <%= render @page.results.order(created_at: :desc) %>
+</div>
